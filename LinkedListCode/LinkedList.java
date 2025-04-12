@@ -1,4 +1,9 @@
 public class LinkedList {
+
+    /*
+     * head and tail always contain the same values as first node and last node
+     * respectively
+     */
     Node head; // ref variable that is used to hold the reference of next (upcoming) node
     Node tail; // ref variable that holds the
     int size; // size of LinkedList... default is zero
