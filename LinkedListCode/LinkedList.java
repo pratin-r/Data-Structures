@@ -61,7 +61,12 @@ public class LinkedList {
         }
         Node temp = head;
         // i = 1 as the first node is already created and its is where you will start
-        for (int i = 1; i < index; i++) { // index = 3 ( 0 , 1 (where i is right now) , 2 ); then i -> 1, i -> 2
+        for (int i = 1; i < index; i++) {
+            /*
+             * example: index = 3 ( 0 , 1 (where i is right now) , 2 ); then i -> 1, i -> 2
+             * or you can use i=0 and i < index-1
+             */
+
             temp = temp.next; // temp is in 2 right now
         }
         // create a new node
