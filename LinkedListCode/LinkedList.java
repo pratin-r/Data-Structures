@@ -15,7 +15,7 @@ public class LinkedList {
         newNode.next = head; // usually at first, we need to assign the value of next in order to attach the
                              // chain of other node
         head = newNode;
-        if (tail == null) {
+        if (tail == null) { // more important when adding more than 1 node to the linkedlist
             tail = head;
         }
         size++;
