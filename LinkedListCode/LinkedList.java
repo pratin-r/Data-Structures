@@ -118,7 +118,8 @@ public class LinkedList {
             temp = temp.next;
         }
         int tempval = temp.next.data;
-        temp.next = null;
+        tail = temp;
+        tail.next = null;
         size--;
         return tempval;
     }
