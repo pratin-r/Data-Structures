@@ -1,0 +1,29 @@
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        /* i is going to iterate throughout nums2 array.
+        j=m helps us to start from 4th index (index no 3) since 
+        nums1 size is m+n. */
+        // for(int i=0,j=m;i<n;i++){
+        //     nums1[j++]=nums2[i];
+        // }
+        // Arrays.sort(nums1);
+        int l=--m;
+        int r=--n; 
+        int end=nums1.length-1;
+        while(l>=0 && r>=0){
+            if(nums2[r]>nums1[l]){
+                nums1[end]=nums2[r];
+                end-=1;
+                r-=1;
+            }
+            else{
+                nums1[end]=nums1[l];
+                end-=1;
+                l-=1;
+            }
+        }
+        while(r>=0){
+            nums1[end]=nums2[r];
+            end-=1;
+            r-=1;
+        }
+    }

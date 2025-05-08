@@ -1,0 +1,39 @@
+using binary search
+class Solution {
+    public int maximumCount(int[] nums) {
+        int n = nums.length;
+        int left = 0;
+        int right = nums.length - 1;
+        // for positive integer count
+        while (left <= right) {
+            int mid = left + ((right - left) / 2);
+            if (nums[mid] > 0) {
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+        int posCount = n - left;
+        /*
+         * suppose if you have an array of length 5 {-4,-3,-2,-1,0},
+         * the left will be 5. when you subtract it from length of array which is 5.
+         * then 5 - 5 = 0, which means that there is no positive integer in the array
+         */
+        
+        // for negative integer count, reassign left and right values
+        left = 0;
+        right = nums.length - 1;
+        while (left <= right) {
+            int mid = left + ((right - left) / 2);
+            if(nums[mid]<0){
+                left=mid+1;
+            }
+            else{
+                right=mid-1;
+            }
+        }
+        int negCount=left;
+        return posCount>negCount?posCount:negCount;
+
+    }
+}

@@ -1,0 +1,48 @@
+/* S.o.p is used to check the values
+    code wont run when as the int value cannot hold when input it too large for the int type
+
+ */
+class Solution {
+    public String largestOddNumber(String num) {
+        int whole_input=Integer.parseInt(num);
+        String high="";
+        int max_value=0;
+        if(whole_input%2!=0){
+            return num;
+        }
+        
+        for(int i=num.length()-1;i>=0;i--){
+            System.out.println(i);
+            int input_num=Character.getNumericValue(num.charAt(i));
+            System.out.println(input_num);
+            if(input_num > max_value && input_num%2!=0){
+                max_value=input_num;
+                high=num.substring(0,i+1); //i+1 coz range is from 0 to n-1
+            }
+            System.out.println(high);
+        }
+        return high; 
+    }
+}
+
+// another code that i did. not optimal
+
+class Solution {
+    public String largestOddNumber(String num) {
+        int left=0;
+        int right=num.length()-1;
+        boolean flag=true;
+        while(flag && right>=0){
+            int in_num=Character.getNumericValue(num.charAt(right));
+            System.out.println(in_num);
+            if(in_num%2==0){
+                right--;
+            }
+            else {
+                flag=false;
+            }
+        }
+        return num.substring(left,right+1);
+    }
+}
+
