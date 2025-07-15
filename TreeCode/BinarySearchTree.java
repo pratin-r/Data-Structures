@@ -11,22 +11,17 @@ class Node {
     int val;
     Node left;
     Node right;
-    public Node next;
 
     public Node(int val) {
         this.val = val;
     }
 
-    public Node(int data, Node next2) {
-        //TODO Auto-generated constructor stub
-    }
-
 }
 
-class Bst {
+class BT {
     Node root;
 
-    public Bst() {
+    public BT() {
         root = null;
     }
 
@@ -107,7 +102,7 @@ class Bst {
     }
 
     /*
-     * ALL THREE ALGORITHMS ARE DEPTH FIRst SEARCH (DFS)
+     * ALL THREE ALGORITHMS ARE DEPTH FIRST SEARCH (DFS)
      * 
      * ALL THREE TRAVERSALS WILL REACH LEAF NODE (NODE WITHOUT CHILD) AND ONLY THEN
      * IT GOES TO OTHER NODE.
@@ -163,7 +158,7 @@ class Bst {
 
     }
 
-    // BREADTH FIRst SEARCH
+    // BREADTH FIRST SEARCH
     public void levelOrderTraversalDisplay() {
         levelOrderTraversal(root);
     }
@@ -174,7 +169,10 @@ class Bst {
         queue.offer(root);
         int curLevel = 0;
         while (!queue.isEmpty()) {
-            // at first the size of queue is one because it has only one Node which is root
+            /*
+             * at first the size of queue is one because it has only one Node which is root.
+             * it will gradually increase after adding nodes to queue
+             */
             int len = queue.size();
             System.out.print("Level: " + curLevel);
             for (int i = 0; i < len; i++) {
@@ -185,7 +183,12 @@ class Bst {
                 Node node = queue.poll();
                 System.out.print(" -> " + node.val);
 
-                // by offering the node.left in queue, the size of queue increases dynamically
+                // by offering the node.left and node .right in queue, the size of queue
+                // increases dynamically
+                /*
+                 * at first node.left will be there in queue and then node.right. node.left will
+                 * get polled (popped out from the queue)
+                 */
                 if (node.left != null) {
                     queue.offer(node.left);
                 }
@@ -199,12 +202,12 @@ class Bst {
     }
 
     /*
-     * ONE MIstAKE IVE MADE WHILE TYPING THIS
+     * ONE MISTAKE IVE MADE WHILE TYPING THIS
      * when you want to check using boolean, you need to return the result of called
      * method.
      * 
-     * if you type istargetPresent(root.right,target) instead of
-     * return istargetPresent(root.right, target), even if the element is present
+     * if you type isTargetPresent(root.right,target) instead of
+     * return isTargetPresent(root.right, target), even if the element is present
      * and it returns true to the method which called it, to the methods which are
      * CALLED BEFORE wont be able to fetch it.
      * 
@@ -213,21 +216,21 @@ class Bst {
      * 
      */
     public void search(int target) {
-        if (istargetPresent(root, target)) {
+        if (isTargetPresent(root, target)) {
             System.out.println("The target element: " + target + " is present");
         } else {
             System.out.println("The target element: " + target + " is absent");
         }
     }
 
-    public boolean istargetPresent(Node root, int target) {
+    public boolean isTargetPresent(Node root, int target) {
         if (root == null) {
             return false;
         }
         if (target > root.val) {
-            return istargetPresent(root.right, target);
+            return isTargetPresent(root.right, target);
         } else if (target < root.val) {
-            return istargetPresent(root.left, target);
+            return isTargetPresent(root.left, target);
         } else {
             return true;
         }
@@ -236,7 +239,7 @@ class Bst {
 
 public class BinarySearchTree {
     public static void main(String[] args) {
-        Bst obj1 = new Bst();
+        BT obj1 = new BT();
         obj1.insert(4);
         obj1.insert(3);
         obj1.insert(2);
