@@ -171,7 +171,7 @@ class BT {
         while (!queue.isEmpty()) {
             /*
              * at first the size of queue is one because it has only one Node which is root.
-             * it will gradually increase after adding nodes to queue
+             * it will decrease and increase based on offer() and poll()
              */
             int len = queue.size();
             System.out.print("Level: " + curLevel);
